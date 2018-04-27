@@ -1,0 +1,109 @@
+.row {
+    margin-bottom: 0;
+}
+
+
+.list-container {
+    position: relative;
+    padding: 0 !important;
+    height: 100vh;
+}
+div.userName {
+    width: 100%;
+    height: 20%;
+    border: 1px black solid;
+}
+div.list {
+    height: 80%;
+    padding: 0 !important;
+    position: relative;
+    overflow: auto;
+}
+
+.list ul li {
+    padding: 0.75rem;
+    width: 100%;
+    cursor: pointer;
+    height: 5rem;
+
+}
+
+div.new {
+    background-color: green;
+}
+.note {
+    border: 1px solid blue;
+    margin: 5px;
+}
+.list ul li.active {
+    background-color: orange !important;
+    font-weight: bold;
+}
+
+.list .secondary-content {
+    float: left;
+    margin-right: 5px;
+    line-height: 3.5rem;
+    font-size: 2rem;
+}
+
+.list h4 {
+    margin: 0;
+}
+
+.list p {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.list-container .add-user {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+.save-btn {
+    float: right;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.friends {
+  width: 300px;
+  /*margin: 0 auto;*/
+}
+
+.search-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.friends-list {
+  padding: 0;
+  width: 100%;
+}
+
+.friend {
+/*  display: flex;
+  align-items: center;*/
+  font-family: sans-serif;
+  width: 100%;
+  padding: 5px;
+  border-bottom: 1px dotted grey;
+}
+
+.friend-image {
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.friend-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.friend-number {
+  font-size: 18px;
+  color: grey;
+}
