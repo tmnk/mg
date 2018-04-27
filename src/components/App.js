@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import ArticleList from './ArticleList'
-import ArticlesChart from './ArticlesChart'
 import Tasks from './Tasks'
 import Friends from './Friend'
 import {tasks} from '../fixtures'
 const DEFAULT_SECTION = 0;
 const TASKS_SECTION = 0;
 const FRIENDS_SECTION = 1;
-const WALL_SECTION = 2;
+const EXIT_SECTION = 2;
 class App extends Component {
 
     state = {
@@ -37,7 +35,8 @@ class App extends Component {
         this.setState({section : FRIENDS_SECTION})
     }
     handleChangeSectionWall = () => {
-        this.setState({section : WALL_SECTION})
+        this.setState({section : EXIT_SECTION})
+        this.props.onExit(true);
     }
 
     render() {
@@ -49,7 +48,7 @@ class App extends Component {
                 <div className="nav">
                     <button className={ this.state.section === 0 ? "current section" : "section" } onClick={this.handleChangeSectionTasks}>Tasks</button>
                     <button className={ this.state.section === 1 ? "current section" : "section" } onClick={this.handleChangeSectionFriends}>Friends</button>
-                    <button className={ this.state.section === 2 ? "current section" : "section" } onClick={this.handleChangeSectionWall}>Wall</button>
+                    <button className={ this.state.section === 2 ? "current section" : "section" } onClick={this.handleChangeSectionWall}>Exit</button>
                 </div>
                 <div className="left-content">
                     {content}
