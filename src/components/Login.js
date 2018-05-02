@@ -11,7 +11,7 @@ const SIGN_IN_PAGE = 2
 const SIGN_UP_PAGE = 3
 export default class Login extends Component {
 	state = {
-		status : NONE_LOGIN,
+		status : COMPLETE_LOGIN,
 		activePage : SIGN_IN_PAGE
 	}
 	handleEnter = (log, pass) => {

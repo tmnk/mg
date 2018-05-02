@@ -14,7 +14,7 @@ export default class NoteEditor extends Component {
 		const {id, status} = this.props
 		// debugger;
 	return (
-		<div id={id} onClick={this.changeStatus}  className={ !this.state.status ? "new note" : "complete note"} >
+		<div id={id} onClick={this.changeStatus}  className={ this.state.status ? "new note" : "complete note"} >
                 {this.props.children}
             </div>
             )

@@ -43,9 +43,10 @@ class App extends Component {
         const content = (this.state.section == TASKS_SECTION ? <Tasks changeStatus={this.changeStatus} notes={this.state.notes} onNoteAdd={this.addTask} /> : (this.state.section == FRIENDS_SECTION ? <Friends friends={tasks} /> : 0 ))
 
         return (
-            <div className="main">
+        <div className="row">
+            <div className="main col s3 blue lighten-5 list-container">
 
-                <div className="nav">
+                <div className="nav ">
                     <button className={ this.state.section === 0 ? "current section" : "section" } onClick={this.handleChangeSectionTasks}>Tasks</button>
                     <button className={ this.state.section === 1 ? "current section" : "section" } onClick={this.handleChangeSectionFriends}>Friends</button>
                     <button className={ this.state.section === 2 ? "current section" : "section" } onClick={this.handleChangeSectionWall}>Exit</button>
@@ -53,10 +54,12 @@ class App extends Component {
                 <div className="left-content">
                     {content}
                </div>
-                <div className="right-content">
+            </div>
+
+                <div className="right-content col s9 main-content">
                     {this.state.right}
                </div>
-            </div>
+        </div>
 
         )
     }

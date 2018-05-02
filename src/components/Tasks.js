@@ -9,7 +9,7 @@ export default class Tasks extends Component {
 	}
 	addTask = (newNote) => {
 		var newList = this.state.notes.slice();
-		newList.push(newNote);
+		newList.unshift(newNote);
 		this.setState({notes: newList});
 		this.props.onNoteAdd(newList);
 	}
@@ -17,11 +17,11 @@ export default class Tasks extends Component {
 		this.props.changeStatus(id, status);
 	}
 	render() {
-		console.log(this.state.notes)
+		const notesSorted = this.state.notes.filter((k) => k.status == 0).concat(this.state.notes.filter((k) => k.status > 0))
 		return (
 			<div> 
 				<NoteEditor onNoteAdd={this.addTask} />
-				<NoteList changeStatus={this.changeStatus} notes = {this.state.notes} />
+				<NoteList changeStatus={this.changeStatus} notes = {notesSorted} />
 			</div>
 			)
 	}

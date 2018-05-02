@@ -10,7 +10,7 @@ var NoteEditor = React.createClass({
     handleNoteAdd: function(ev) {
         var newNote = {
             text: this.state.text,
-            status: 0,
+            status: 1,
             id: Date.now()
         };
 
