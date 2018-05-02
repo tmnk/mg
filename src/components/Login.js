@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import SignIn from './SignIn'
 import SignUp from './SignUp'
 
@@ -42,6 +44,8 @@ export default class Login extends Component {
 	}
 	render() {
 		const body = (this.state.status === COMPLETE_LOGIN ? <App onExit={this.handleExit} /> : (this.state.activePage === SIGN_IN_PAGE ? <SignIn onUpPage={this.onUpPage} onEnterLogin={this.handleEnter} /> : <SignUp onInPage={this.onInPage}  onRegLogin={this.handleReg} />))
-		return (<div>{body}</div>)
+		return (
+  <MuiThemeProvider>{body}
+  </MuiThemeProvider>)
 	}
 }

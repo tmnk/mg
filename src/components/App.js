@@ -3,6 +3,19 @@ import PropTypes from 'prop-types'
 import Tasks from './Tasks'
 import Friends from './Friend'
 import {tasks} from '../fixtures'
+import FontIcon from 'material-ui/FontIcon';
+import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
+import Paper from 'material-ui/Paper';
+import ActionPermIdentity from 'material-ui/svg-icons/action/perm-identity';
+import ActionSupervisorAccount from 'material-ui/svg-icons/action/supervisor-account';
+import ActionLockOutline from 'material-ui/svg-icons/action/lock-outline';
+
+const feedIcon = <ActionPermIdentity />;
+const friendsIcon = <ActionSupervisorAccount />;
+const exitIcon = <ActionLockOutline />;
+
+
+
 const DEFAULT_SECTION = 0;
 const TASKS_SECTION = 0;
 const FRIENDS_SECTION = 1;
@@ -12,8 +25,9 @@ class App extends Component {
     state = {
         section : 0,
         notes : tasks[0].tasks,
-        right : "",
-        friends : tasks[0].friends
+        right : "privet",
+        friends : tasks[0].friends,
+         selectedIndex: 0
     }
     changeStatus = (id, status) => {
         this.state.notes.forEach((note, i) => {
@@ -46,11 +60,25 @@ class App extends Component {
         <div className="row">
             <div className="main col s3 blue lighten-5 list-container">
 
-                <div className="nav ">
-                    <button className={ this.state.section === 0 ? "current section" : "section" } onClick={this.handleChangeSectionTasks}>Tasks</button>
-                    <button className={ this.state.section === 1 ? "current section" : "section" } onClick={this.handleChangeSectionFriends}>Friends</button>
-                    <button className={ this.state.section === 2 ? "current section" : "section" } onClick={this.handleChangeSectionWall}>Exit</button>
-                </div>
+                  <Paper zDepth={1}>
+                    <BottomNavigation selectedIndex={this.state.section}>
+                      <BottomNavigationItem
+                        label="Home"
+                        icon={feedIcon}
+                        onClick={() => this.setState({section : TASKS_SECTION})}
+                      />
+                      <BottomNavigationItem
+                        label="Friends"
+                        icon={friendsIcon}
+                        onClick={() => this.setState({section : FRIENDS_SECTION})}
+                      />
+                      <BottomNavigationItem
+                        label="Exit"
+                        icon={exitIcon}
+                        onClick={() => {this.setState({section : EXIT_SECTION}); this.props.onExit(true);}}
+                      />
+                    </BottomNavigation>
+                  </Paper>
                 <div className="left-content">
                     {content}
                </div>
