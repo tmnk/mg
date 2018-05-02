@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Note from './Note'
+import {List} from 'material-ui/List';
 
 export default class NoteList extends Component {
 	state = {
@@ -10,10 +11,9 @@ export default class NoteList extends Component {
 		this.props.changeStatus(id, status);
 	}
 	render () {
-	const list =  this.props.notes.map(note => <li className="notesLi" key={note.id}>
-		<Note changeStatus={this.handleChangeStatus} id={note.id} status={note.status}>{note.text}</Note>
-		</li>
+	const list =  this.props.notes.map(note =>
+		<Note key={note.id} changeStatus={this.handleChangeStatus} id={note.id} status={note.status}>{note.text}</Note>
 		)
-	return (<ul>{list}</ul>)
+	return (<List>{list}</List>)
 }
 }

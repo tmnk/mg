@@ -25,9 +25,9 @@ class App extends Component {
     state = {
         section : 0,
         notes : tasks[0].tasks,
-        right : "privet",
+        right : "",
         friends : tasks[0].friends,
-         selectedIndex: 0
+        selectedIndex: 0
     }
     changeStatus = (id, status) => {
         this.state.notes.forEach((note, i) => {
