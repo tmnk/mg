@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Tasks from './Tasks'
-import Friends from './Friend'
+import Tasks from './Notes/Tasks'
+import Friends from './Friends/Friend'
 import {tasks} from '../fixtures'
 import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';

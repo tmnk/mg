@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import SignIn from './SignIn'
-import SignUp from './SignUp'
+import SignIn from './Sign/SignIn'
+import SignUp from './Sign/SignUp'
 
 import App from './App'
 const NONE_LOGIN = 0
