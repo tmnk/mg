@@ -110,3 +110,9 @@ div.new {
 .friendListFace {
   border-radius: 100px;
 }
+
+div.friendMenu {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}

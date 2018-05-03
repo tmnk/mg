@@ -23,18 +23,18 @@ export default class FriendList extends Component {
     }
 
     render () {
-
         return (
             <div className="friends">
                 <input type="text" placeholder="Search..." className="search-field" onChange={this.handleSearch} />
                 <List>
                     {
-                       this.state.displayedFriends.map(function(el) {
+                       this.state.displayedFriends.map((el) => {
                             return <FriendItem
                                 key={el.id}
+                                id={el.id}
                                 name={el.name}
                                 image={el.img}
-                                onGoTo={() => this.props.onGoToFriend(el.id)}
+                                onGoTo={(id) => this.props.onGoToFriend(id)}
                             />;
                        })
                     }

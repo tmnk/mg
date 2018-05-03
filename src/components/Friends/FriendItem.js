@@ -16,7 +16,7 @@ export default class FriendItem extends Component {
                 leftAvatar={<img className="friendListFace" src={this.props.image} />}
                 rightIcon={<ActionInfo />}
                 primaryText={this.props.name}
-                onClick={this.changeStatus}
+                onClick={() => this.props.onGoTo(this.props.id)}
               />
             // <li className="contact">
             //     <img className="contact-image" src={this.props.image} width="60px" height="60px" />

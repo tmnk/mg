@@ -13,7 +13,7 @@ export default class Tasks extends Component {
 		this.setState({notes: newList});
 		this.props.onNoteAdd(newList);
 	}
-	changeStatus = (id, status) => {
+	changeStatus = (id, status, body) => {
 		this.props.changeStatus(id, status);
 	}
 	render() {

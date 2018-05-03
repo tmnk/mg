@@ -60,7 +60,25 @@ export const tasks = [
                 "status" : "1",
                 "text": "Non amet amet ut magna culpa dolore consequat occaecat. Commodo adipisicing laboris voluptate enim mollit mollit anim aliquip deserunt nostrud deserunt cillum est. Ad eu cupidatat dolor nostrud et minim id in dolor occaecat ad magna elit. Laboris elit laboris aliquip Lorem reprehenderit id amet reprehenderit laborum minim incididunt cupidatat eiusmod."
             }
-        ]
+        ],
+        "chat":[
+            {
+                "id": "1344",
+                "body":"Hello",
+                "whom": "1"
+            },
+            {
+                "id": "1345",
+                "body":"Hello, it's me",
+                "whom": "2"
+            },
+            {
+                "id": "1346",
+                "body":"How are u",
+                "whom": "1"
+            }
+        ],
+        "isFriend" : "1"
     },
     {
         "id": "3",
@@ -82,7 +100,25 @@ export const tasks = [
                 "status" : "1",
                 "text": "Non qui Lorem qui commodo sint in esse non aliqua pariatur mollit veniam. Elit labore ad nisi anim adipisicing tempor velit commodo adipisicing ipsum ut. Nostrud cillum aliquip adipisicing id do occaecat est eiusmod adipisicing duis. Magna dolore et non nisi in non cillum officia elit non esse proident irure aute. Proident mollit amet enim dolore eiusmod dolor qui. Eiusmod reprehenderit cillum sit deserunt nostrud enim duis excepteur. Excepteur pariatur sunt in ipsum id minim est mollit."
             }
-        ]
+        ],
+        "chat":[
+            {
+                "id": "1344",
+                "body":"Hello",
+                "whom": "1"
+            },
+            {
+                "id": "1345",
+                "body":"Hello, it's me",
+                "whom": "2"
+            },
+            {
+                "id": "1346",
+                "body":"How are u",
+                "whom": "1"
+            }
+        ],
+        "isFriend" : "1"
     },
     {
         "id": "4",
