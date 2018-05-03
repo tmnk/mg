@@ -21,17 +21,17 @@ export default class Message extends Component {
 		console.log(whom)
 		if (parseInt(whom)) {
 			content = 		<ListItem
-						        rightAvatar={<img className="friendListFace" src={this.props.avatar.u} />}
+						        leftAvatar={<img className="friendListFace" src={this.props.avatar.f} />}
 						        primaryText={this.props.children}
 						      />
 		}
 		else {
 			content = 		<ListItem
-			       leftAvatar={<img className="friendListFace" src={this.props.avatar.f} />}
+			       rightAvatar={<img className="friendListFace" src={this.props.avatar.u} />}
 			        primaryText={this.props.children}
 			      />
 		}
-		debugger
+		// debugger
 	return (
 		<List>{content}</List>
 

@@ -8,8 +8,8 @@ export default class ChatList extends Component {
 		chat : this.props.chat
 	}
 	render () {
-		debugger
-	const list =  this.state.chat.map(message =>
+	 debugger
+	const list =  this.props.chat.map(message =>
 		<Message key={message.id} avatar={this.props.avatar} whom={message.whom}>{message.text}</Message>
 		)
 	return (<div>{list}</div>)

@@ -22,7 +22,7 @@ export default class FriendItem extends Component {
         };
         this.props.onAddFriendTask(newNote);
 	}
-	onAddMessage = () => {   //!!!
+	handleAddMessage = () => {   //!!!
 	}
 	render() {
 		let addButton = this.props.content.isFriend ? <ContentRemove onClick={() => this.props.onRemoveFriend(this.props.id)} /> : <ContentAdd onClick={() => this.props.onAddFriend(this.props.id)} />;

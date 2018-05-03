@@ -8,17 +8,17 @@ export default class Chat extends Component {
 		chat : this.props.chat ? this.props.chat : [],
 	}
 	addTask = (newMessage) => {
-		var newList = this.state.notes.slice();
-		newList.unshift(newChat);
-		this.setState({notes: newList});
-		this.props.onChatAdd(newList);
+		var newList = this.state.chat.slice();
+		newList.push(newMessage);
+		this.setState({chat: newList});
+		this.props.onAddMessage(newList);
 	}
 	render() {
-		// debugger
+		debugger
 		return (
 			<div> 
 				<ChatList chat = {this.state.chat} avatar={this.props.avatar} />
-				<ChatEditor onChatAdd={this.addTask} />
+				<ChatEditor onMessageAdd={this.addTask} />
 			</div>
 			)
 	}

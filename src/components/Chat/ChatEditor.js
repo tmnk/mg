@@ -10,7 +10,7 @@ var ChatEditor = React.createClass({
     handleChatAdd: function(ev) {
         var newChat = {
             text: this.state.text,
-            status: 0,
+            whom: 0,
             id: Date.now()
         };
 
@@ -26,9 +26,9 @@ var ChatEditor = React.createClass({
     KeyPress: function(event) {
         debugger
         if (event.charCode === 13 && this.state.text != '') {
-            var newChat = {
+            var newMessage = {
                 text: this.state.text,
-                status: 0,
+                whom: 0,
                 id: Date.now()
             };
 
