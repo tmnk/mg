@@ -1,27 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-var Contact = React.createClass({
-            render: function() {
-                return (
-                    <li className="contact">
-                        <img className="contact-image" src={this.props.image} width="60px" height="60px" />
-                        <div className="contact-info">
-                            <div className="contact-name"> {this.props.name} </div>
-                        </div>
-                    </li>
-                );
-            }
-        });
 
-var FriendsList = React.createClass({
-    getInitialState: function() {
-        return {
-            displayedFriends: this.props.friends,
-            fullFriends : this.props.friends
-        };
-    },
+import {List} from 'material-ui/List';
+import FriendItem from './FriendItem'
 
-    handleSearch: function(event) {
+export default class FriendList extends Component {
+    state = {
+        displayedFriends: this.props.friends,
+        fullFriends : this.props.friends
+    };
+
+    handleSearch = (event) => {
         var searchQuery = event.target.value.toLowerCase();
         var displayedFriends = this.state.fullFriends.filter(function(el) {
             var searchValue = el.name.toLowerCase();
@@ -31,28 +20,26 @@ var FriendsList = React.createClass({
         this.setState({
             displayedFriends: displayedFriends
         });
-    },
+    }
 
-    render: function() {
+    render () {
 
-            	console.log(this.props);
         return (
             <div className="friends">
                 <input type="text" placeholder="Search..." className="search-field" onChange={this.handleSearch} />
-                <ul className="friends-list">
+                <List>
                     {
                        this.state.displayedFriends.map(function(el) {
-                            return <Contact
+                            return <FriendItem
                                 key={el.id}
                                 name={el.name}
                                 image={el.img}
+                                onGoTo={() => this.props.onGoToFriend(el.id)}
                             />;
                        })
                     }
-                </ul>
+                </List>
             </div>
         );
     }
-});
-
-export default FriendsList;
+}

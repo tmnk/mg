@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Tasks from './Notes/Tasks'
-import Friends from './Friends/Friend'
+import FriendList from './Friends/FriendList'
 import {tasks} from '../fixtures'
 import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
@@ -41,20 +41,12 @@ class App extends Component {
     addTask = (newList) => {
         this.setState({notes: newList});
     }
-
-    handleChangeSectionTasks = () => {
-        this.setState({section : TASKS_SECTION})
-    }
-    handleChangeSectionFriends = () => {
-        this.setState({section : FRIENDS_SECTION})
-    }
-    handleChangeSectionWall = () => {
-        this.setState({section : EXIT_SECTION})
-        this.props.onExit(true);
+    handleGoToFriend = (id) => {
+        
     }
 
     render() {
-        const content = (this.state.section == TASKS_SECTION ? <Tasks changeStatus={this.changeStatus} notes={this.state.notes} onNoteAdd={this.addTask} /> : (this.state.section == FRIENDS_SECTION ? <Friends friends={tasks} /> : 0 ))
+        const content = (this.state.section == TASKS_SECTION ? <Tasks changeStatus={this.changeStatus} notes={this.state.notes} onNoteAdd={this.addTask} /> : (this.state.section == FRIENDS_SECTION ? <FriendList onGoToFriend={this.handleGoToFriend} friends={tasks} /> : 0 ))
 
         return (
         <div className="row">
