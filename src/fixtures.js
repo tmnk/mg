@@ -3,7 +3,7 @@ export const tasks = [
         "id": "1",
         "date": "2016-06-09T15:03:23.000Z",
         "name": "Commodo qui incididunt",
-        "img" : "https://pp.userapi.com/c841638/v841638199/3076d/5FOAT648j-g.jpg",
+        "img" : "https://pp.userapi.com/c631624/v631624307/3b149/5BX1aC0tQnY.jpg",
         "status" : "1",
         "stats" : [{"complete" : "1", "failed" : "1"}],
         "tasks": [
@@ -64,18 +64,18 @@ export const tasks = [
         "chat":[
             {
                 "id": "1344",
-                "body":"Hello",
-                "whom": "1"
+                "text":"Hello",
+                "whom": "0"
             },
             {
                 "id": "1345",
-                "body":"Hello, it's me",
-                "whom": "2"
+                "text":"Hello, it's me",
+                "whom": "1"
             },
             {
                 "id": "1346",
-                "body":"How are u",
-                "whom": "1"
+                "text":"How are u",
+                "whom": "0"
             }
         ],
         "isFriend" : "1"
@@ -104,17 +104,17 @@ export const tasks = [
         "chat":[
             {
                 "id": "1344",
-                "body":"Hello",
+                "text":"Hello",
                 "whom": "1"
             },
             {
                 "id": "1345",
-                "body":"Hello, it's me",
-                "whom": "2"
+                "text":"Hello, it's me",
+                "whom": "0"
             },
             {
                 "id": "1346",
-                "body":"How are u",
+                "text":"How are u",
                 "whom": "1"
             }
         ],

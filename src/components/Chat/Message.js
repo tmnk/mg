@@ -10,29 +10,31 @@ import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import {blue500, yellow600, grey500} from 'material-ui/styles/colors';
 import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
 
-export default class NoteEditor extends Component {
+export default class Message extends Component {
 	state = {
 		id : this.props.id,
-		status : this.props.status
 	}
-	changeStatus = (ev) => {
-		this.setState({status : !this.state.status})
-		this.props.changeStatus(this.state.id, !this.state.status, this.props.children);
-	} 
+
 	render () {
-		const {id, status} = this.props
-		// debugger;
+		const {id, whom} = this.props
+		let content = ""
+		console.log(whom)
+		if (parseInt(whom)) {
+			content = 		<ListItem
+						        rightAvatar={<img className="friendListFace" src={this.props.avatar.u} />}
+						        primaryText={this.props.children}
+						      />
+		}
+		else {
+			content = 		<ListItem
+			       leftAvatar={<img className="friendListFace" src={this.props.avatar.f} />}
+			        primaryText={this.props.children}
+			      />
+		}
+		debugger
 	return (
-		<ListItem
-	        leftAvatar={<Avatar icon={<ActionAssignment />} backgroundColor={this.state.status ? blue500 : grey500} />}
-	        rightIcon={<ActionInfo />}
-	        primaryText={this.props.children}
-	        onClick={this.changeStatus}
-	      />
-// <div id={id} onClick={this.changeStatus}  className={ this.state.status ? "new note" : "complete note"} >
-  //               {this.props.children}
-  //           </div>
-  //           )
+		<List>{content}</List>
+
         )}
 
 }

@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Note from './Note'
+import Message from './Message'
 import {List} from 'material-ui/List';
 
-export default class NoteList extends Component {
+export default class ChatList extends Component {
 	state = {
-		notes : this.props.notes
-	}
-	handleChangeStatus = (id, status, body) => {
-		this.props.changeStatus(id, status, body);
+		chat : this.props.chat
 	}
 	render () {
-	const list =  this.props.notes.map(note =>
-		<Note key={note.id} changeStatus={this.handleChangeStatus} id={note.id} status={note.status}>{note.text}</Note>
+		debugger
+	const list =  this.state.chat.map(message =>
+		<Message key={message.id} avatar={this.props.avatar} whom={message.whom}>{message.text}</Message>
 		)
-	return (<List>{list}</List>)
+	return (<div>{list}</div>)
 }
 }

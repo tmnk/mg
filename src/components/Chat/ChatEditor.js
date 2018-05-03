@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-var NoteEditor = React.createClass({
+var ChatEditor = React.createClass({
     getInitialState: function() {
         return {
             text: ''
         };
     },
 
-    handleNoteAdd: function(ev) {
-        var newNote = {
+    handleChatAdd: function(ev) {
+        var newChat = {
             text: this.state.text,
             status: 0,
             id: Date.now()
         };
 
-        this.props.onNoteAdd(newNote);
+        this.props.onChatAdd(newChat);
         this.setState({ text: '' });
     },
 
@@ -24,14 +24,15 @@ var NoteEditor = React.createClass({
     },
 
     KeyPress: function(event) {
+        debugger
         if (event.charCode === 13 && this.state.text != '') {
-            var newNote = {
+            var newChat = {
                 text: this.state.text,
                 status: 0,
                 id: Date.now()
             };
 
-            this.props.onNoteAdd(newNote);
+            this.props.onMessageAdd(newMessage);
             this.setState({ text: '' });
         }
     },
@@ -40,7 +41,7 @@ var NoteEditor = React.createClass({
         return (
             <div className="note-editor">
                 <textarea
-                    placeholder="Enter your note here..."
+                    placeholder="Enter your message here..."
                     rows={5}
                     className="textarea"
                     value={this.state.text}
@@ -53,4 +54,4 @@ var NoteEditor = React.createClass({
     }
 });
 
-module.exports = NoteEditor;
+module.exports = ChatEditor;

@@ -33,8 +33,10 @@ class App extends Component {
         friends : tasks[0].friends,
         selectedIndex: 0,
         img : tasks[0].img,
-        name : tasks[0].name
-    }
+        name : tasks[0].name,
+        currImg : tasks[0].img,
+        currName : tasks[0].name,
+    } 
     changeStatus = (id, status) => {
         this.state.notes.forEach((note, i) => {
             if (note.id == id) {
@@ -50,7 +52,7 @@ class App extends Component {
     handleGoToFriend = (id) => {
         let friendInfo = tasks.filter((e) => e.id == id)[0]                       //!!!
         // debugger;
-        this.setState({right : friendInfo, img : friendInfo.img, name : friendInfo.name})
+        this.setState({right : friendInfo, currImg : friendInfo.img, currName : friendInfo.name})
     }
     handleAddFriend = () => {}
     handleRemoveFriend = () => {}
@@ -62,14 +64,14 @@ class App extends Component {
 
     render() {
         const content = (this.state.section == TASKS_SECTION ? <Tasks changeStatus={this.changeStatus} notes={this.state.notes} onNoteAdd={this.addTask} /> : (this.state.section == FRIENDS_SECTION ? <FriendList onGoToFriend={this.handleGoToFriend} friends={tasks} /> : 0 ))
-        console.log(this.state)
+        console.log(this.state.img)
         return (
         <div className="row">
             <div className="main col s3 blue lighten-5 list-container">
                 <List>
                     <ListItem
-                        leftAvatar={<img className="friendListFace" src={this.state.img} />}
-                        primaryText={this.state.name}
+                        leftAvatar={<img className="friendListFace" src={this.state.currImg} />}
+                        primaryText={this.state.currName}
                       />
                 </List>
                   <Paper zDepth={1}>
@@ -97,7 +99,7 @@ class App extends Component {
             </div>
 
                 <div className="right-content col s9 main-content">
-                    {this.state.right ? <FriendDisplay onAddFriendTask={this.onAddFriendTask} onAddFriend={this.handleAddFriend} onRemoveFriend={this.handleRemoveFriend} content={this.state.right} /> : ""}
+                    {this.state.right ? <FriendDisplay avatar={this.state.img} onAddFriendTask={this.onAddFriendTask} onAddFriend={this.handleAddFriend} onRemoveFriend={this.handleRemoveFriend} content={this.state.right} /> : ""}
                </div>
         </div>
 

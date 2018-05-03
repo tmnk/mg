@@ -13,13 +13,11 @@ export default class Chat extends Component {
 		this.setState({notes: newList});
 		this.props.onChatAdd(newList);
 	}
-	changeStatus = (id, status, body) => {
-		this.props.changeStatus(id, status);
-	}
 	render() {
+		// debugger
 		return (
 			<div> 
-				<ChatList notes = {this.state.chat} />
+				<ChatList chat = {this.state.chat} avatar={this.props.avatar} />
 				<ChatEditor onChatAdd={this.addTask} />
 			</div>
 			)
