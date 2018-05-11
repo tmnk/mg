@@ -11,6 +11,7 @@ var NoteEditor = React.createClass({
         var newNote = {
             text: this.state.text,
             status: 0,
+            pbl:0,
             id: Date.now()
         };
 
@@ -28,6 +29,7 @@ var NoteEditor = React.createClass({
             var newNote = {
                 text: this.state.text,
                 status: 0,
+                pbl:0,
                 id: Date.now()
             };
 

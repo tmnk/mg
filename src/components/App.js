@@ -36,35 +36,63 @@ class App extends Component {
         name : this.props.tasks[0].name,
         currImg : this.props.tasks[0].img,
         currName : this.props.tasks[0].name,
-        tasks : this.props.tasks
+        tasks : this.props.tasks,
+        idFriend : 0
     } 
     changeStatus = (id, status) => {
         this.state.notes.forEach((note, i) => {
             if (note.id == id) {
                 this.state.notes[i].status = status;
+                this.state.tasks[0].tasks[i].status = status;
             }
 
             console.log(i, note)
         })
     }
+    changePbl = (id, pbl) => {
+        this.state.notes.forEach((note, i) => {
+            if (note.id == id) {
+                this.state.notes[i].pbl = pbl;
+                this.state.tasks[0].tasks[i].pbl = pbl;
+                alert(this.state.notes[i].pbl)
+            }
+
+        })
+    }
     addTask = (newList) => {
+        debugger
         this.setState({notes: newList});
+        this.state.tasks[0].tasks = newList;
+        console.log(this.state.notes)
+    }
+    addMessage = (newList) => {
+        this.state.tasks.forEach((note, i) => {
+            if (note.id == this.state.idFriend) {
+                this.state.tasks[i].chat = newList;
+                        let friendInfo = this.state.tasks.filter((e) => e.id == this.state.idFriend)[0]                       //!!!
+        this.setState({right : friendInfo, currImg : friendInfo.img, currName : friendInfo.name, idFriend : id})
+            }
+
+        })
     }
     handleGoToFriend = (id) => {
+        console.log(this.state.tasks, this.state.notes)
+        debugger;
         let friendInfo = this.state.tasks.filter((e) => e.id == id)[0]                       //!!!
-        // debugger;
-        this.setState({right : friendInfo, currImg : friendInfo.img, currName : friendInfo.name})
+        this.setState({right : friendInfo})
     }
     handleAddFriend = () => {}
     handleRemoveFriend = () => {}
     onAddFriendTask = (newNote) => {
         var newList = this.state.notes.slice();
         newList.unshift(newNote);
+
+        this.state.tasks[0].tasks = newList;
         this.setState({notes: newList, section : this.state.section});
     }
 
     render() {
-        const content = (this.state.section == TASKS_SECTION ? <Tasks changeStatus={this.changeStatus} notes={this.state.notes} onNoteAdd={this.addTask} /> : (this.state.section == FRIENDS_SECTION ? <FriendList onGoToFriend={this.handleGoToFriend} friends={this.state.tasks} /> : 0 ))
+        const content = (this.state.section == TASKS_SECTION ? <Tasks changePbl={this.changePbl} changeStatus={this.changeStatus} notes={this.state.notes} onNoteAdd={this.addTask} /> : (this.state.section == FRIENDS_SECTION ? <FriendList onGoToFriend={this.handleGoToFriend} friends={this.state.tasks} /> : 0 ))
         console.log(this.state.img)
         return (
         <div className="row">
@@ -100,7 +128,7 @@ class App extends Component {
             </div>
 
                 <div className="right-content col s9 main-content">
-                    {this.state.right ? <FriendDisplay avatar={this.state.img} onAddFriendTask={this.onAddFriendTask} onAddFriend={this.handleAddFriend} onRemoveFriend={this.handleRemoveFriend} content={this.state.right} /> : ""}
+                    {this.state.right ? <FriendDisplay avatar={this.state.img} onAddFriendTask={this.onAddFriendTask} onAddFriend={this.handleAddFriend} onRemoveFriend={this.handleRemoveFriend} onAddMessage={this.addMessage} content={this.state.right} /> : ""}
                </div>
         </div>
 

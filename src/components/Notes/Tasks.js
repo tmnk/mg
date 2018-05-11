@@ -8,6 +8,7 @@ export default class Tasks extends Component {
 		notes : this.props.notes,
 	}
 	addTask = (newNote) => {
+		debugger
 		var newList = this.state.notes.slice();
 		newList.unshift(newNote);
 		this.setState({notes: newList});
@@ -16,12 +17,16 @@ export default class Tasks extends Component {
 	changeStatus = (id, status, body) => {
 		this.props.changeStatus(id, status);
 	}
+	changePbl = (id, pbl) => {  //!!
+		// alert(pbl)
+		this.props.changePbl(id, pbl);
+	}
 	render() {
 		const notesSorted = this.state.notes.filter((k) => k.status == 0).concat(this.state.notes.filter((k) => k.status > 0))
 		return (
 			<div> 
 				<NoteEditor onNoteAdd={this.addTask} />
-				<NoteList changeStatus={this.changeStatus} notes = {notesSorted} />
+				<NoteList inUse={0} changePbl = {this.changePbl}  changeStatus={this.changeStatus} notes = {notesSorted} />
 			</div>
 			)
 	}
