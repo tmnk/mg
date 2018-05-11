@@ -29,8 +29,9 @@ export default class FriendItem extends Component {
 		const style = {
 		  marginRight: 20,
 		};
-		let content = (this.state.section === TASKS_FRIEND) ? <NoteList changeStatus={this.handleAddTask} notes = {this.props.content.tasks} /> : <Chat onAddMessage={this.handleAddMessage} chat={this.props.content.chat} avatar={{"u":this.props.avatar, "f":this.props.content.img}} />
+		
 		debugger
+		let content = (this.state.section === TASKS_FRIEND) ? <NoteList changeStatus={this.handleAddTask} notes = {this.props.content.tasks} /> : <Chat onAddMessage={this.handleAddMessage} chat={this.props.content.chat} avatar={{"u":this.props.avatar, "f":this.props.content.img}} />
 		return (
 		<div>
             <div className="friend info"> 

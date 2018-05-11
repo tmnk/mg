@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Tasks from './Notes/Tasks'
 import FriendList from './Friends/FriendList'
 import FriendDisplay from './MainPage/FriendDisplay'
-import {tasks} from '../fixtures'
+// import {tasks} from '../fixtures'
 import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
@@ -28,14 +28,15 @@ class App extends Component {
 
     state = {
         section : 0,
-        notes : tasks[0].tasks,
+        notes : this.props.tasks[0].tasks,
         right : EMPTY_MAIN_CONTENT,
-        friends : tasks[0].friends,
+        friends : this.props.tasks[0].friends,
         selectedIndex: 0,
-        img : tasks[0].img,
-        name : tasks[0].name,
-        currImg : tasks[0].img,
-        currName : tasks[0].name,
+        img : this.props.tasks[0].img,
+        name : this.props.tasks[0].name,
+        currImg : this.props.tasks[0].img,
+        currName : this.props.tasks[0].name,
+        tasks : this.props.tasks
     } 
     changeStatus = (id, status) => {
         this.state.notes.forEach((note, i) => {
@@ -50,7 +51,7 @@ class App extends Component {
         this.setState({notes: newList});
     }
     handleGoToFriend = (id) => {
-        let friendInfo = tasks.filter((e) => e.id == id)[0]                       //!!!
+        let friendInfo = this.state.tasks.filter((e) => e.id == id)[0]                       //!!!
         // debugger;
         this.setState({right : friendInfo, currImg : friendInfo.img, currName : friendInfo.name})
     }
@@ -63,7 +64,7 @@ class App extends Component {
     }
 
     render() {
-        const content = (this.state.section == TASKS_SECTION ? <Tasks changeStatus={this.changeStatus} notes={this.state.notes} onNoteAdd={this.addTask} /> : (this.state.section == FRIENDS_SECTION ? <FriendList onGoToFriend={this.handleGoToFriend} friends={tasks} /> : 0 ))
+        const content = (this.state.section == TASKS_SECTION ? <Tasks changeStatus={this.changeStatus} notes={this.state.notes} onNoteAdd={this.addTask} /> : (this.state.section == FRIENDS_SECTION ? <FriendList onGoToFriend={this.handleGoToFriend} friends={this.state.tasks} /> : 0 ))
         console.log(this.state.img)
         return (
         <div className="row">

@@ -14,6 +14,7 @@ export default class Chat extends Component {
 		this.props.onAddMessage(newList);
 	}
 	render() {
+		this.state.chat = this.props.chat ? this.props.chat : [];
 		debugger
 		return (
 			<div> 
