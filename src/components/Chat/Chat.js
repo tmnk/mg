@@ -10,6 +10,7 @@ export default class Chat extends Component {
 	addTask = (newMessage) => {
 		var newList = this.state.chat.slice();
 		newList.push(newMessage);
+
 		this.setState({chat: newList});
 		this.props.onAddMessage(newList);
 	}

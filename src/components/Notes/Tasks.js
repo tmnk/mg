@@ -13,6 +13,7 @@ export default class Tasks extends Component {
 		newList.unshift(newNote);
 		this.setState({notes: newList});
 		this.props.onNoteAdd(newList);
+		
 	}
 	changeStatus = (id, status, body) => {
 		this.props.changeStatus(id, status);

@@ -44,9 +44,22 @@ class App extends Component {
             if (note.id == id) {
                 this.state.notes[i].status = status;
                 this.state.tasks[0].tasks[i].status = status;
+                $.ajax({
+                  url:`http://localhost:3000/upTask?id=${encodeURIComponent(this.state.tasks[0].tasks[i].id)}&status=${encodeURIComponent(this.state.tasks[0].tasks[i].status)}&pbl=${encodeURIComponent(1)}`,
+                  type:'POST',
+                  // headers: {"access-control-allow-origin", "*" },
+                  dataType:"json",
+                  // data: {"data":"gg"},
+                  success: function (data) {
+                      alert( "Succes" );
+                  },
+                  error:function (data) {
+                      alert( "error" );
+                  }
+                })
             }
 
-            console.log(i, note)
+            // console.log(i, note)
         })
     }
     changePbl = (id, pbl) => {
@@ -54,23 +67,61 @@ class App extends Component {
             if (note.id == id) {
                 this.state.notes[i].pbl = pbl;
                 this.state.tasks[0].tasks[i].pbl = pbl;
-                alert(this.state.notes[i].pbl)
+                $.ajax({
+                  url:`http://localhost:3000/upTask?id=${encodeURIComponent(this.state.tasks[0].tasks[i].id)}&status=${encodeURIComponent(this.state.tasks[0].tasks[i].status)}&pbl=${encodeURIComponent(this.state.tasks[0].tasks[i].pbl)}`,
+                  type:'POST',
+                  // headers: {"access-control-allow-origin", "*" },
+                  dataType:"json",
+                  // data: {"data":"gg"},
+                  success: function (data) {
+                      alert( "Succes" );
+                  },
+                  error:function (data) {
+                      alert( "error" );
+                  }
+                })
             }
 
         })
     }
+
     addTask = (newList) => {
         debugger
         this.setState({notes: newList});
         this.state.tasks[0].tasks = newList;
-        console.log(this.state.notes)
+        $.ajax({
+          url:`http://localhost:3000/newTask?id=${encodeURIComponent(this.props.tasks[0].id)}&body=${encodeURIComponent(newList[0].text)}`,
+          type:'POST',
+          // headers: {"access-control-allow-origin", "*" },
+          dataType:"json",
+          // data: {"data":"gg"},
+          success: function (data) {
+              alert( "Succes" );
+          },
+          error:function (data) {
+              alert( "error" );
+          }
+        })
     }
     addMessage = (newList) => {
         this.state.tasks.forEach((note, i) => {
             if (note.id == this.state.idFriend) {
                 this.state.tasks[i].chat = newList;
-                        let friendInfo = this.state.tasks.filter((e) => e.id == this.state.idFriend)[0]                       //!!!
-        this.setState({right : friendInfo, currImg : friendInfo.img, currName : friendInfo.name, idFriend : id})
+                let friendInfo = this.state.tasks.filter((e) => e.id == this.state.idFriend)[0]                       //!!!
+                this.setState({right : friendInfo, currImg : friendInfo.img, currName : friendInfo.name, idFriend : id})
+                $.ajax({
+                  url:`http://localhost:3000/addMess?one=${encodeURIComponent(this.state.tasks[0].id)}&two=${encodeURIComponent(this.state.idFriend)}&whom=${encodeURIComponent(0)}&body=${encodeURIComponent(newList[newList.length - 1].text)}`,
+                  type:'POST',
+                  // headers: {"access-control-allow-origin", "*" },
+                  dataType:"json",
+                  // data: {"data":"gg"},
+                  success: function (data) {
+                      alert( "Succes" );
+                  },
+                  error:function (data) {
+                      alert( "error" );
+                  }
+                })
             }
 
         })
